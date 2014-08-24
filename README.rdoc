@@ -1,3 +1,11 @@
 = Timepiece
 
 This project rocks and uses MIT-LICENSE.
+
+Include "//= require timepiece" in application.js
+
+Add a functional clock to your views with "<%= timepiece %>"
+
+Pass a timezone paramater, e.g. "<%= timepiece('London') %>" (Defaults to 'UTC')
+
+Timepiece will automatically generate a digital clock and keep it updated.
