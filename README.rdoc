@@ -5,17 +5,17 @@ Installation:
 
 	#Gemfile
 
-		gem 'timepiece'
+	*	gem 'timepiece'
 
 	#application.js
 
-		//= require timepiece
+	*	//= require timepiece
 
 
 How to use:
 
-	Add a functional clock to your views with "<%= timepiece %>"
+*	Add a functional clock to your views with "<%= timepiece %>"
 
-	Pass a timezone paramater, e.g. "<%= timepiece('London') %>" (Defaults to 'UTC')
+*	Pass a timezone paramater, e.g. "<%= timepiece('London') %>" (Defaults to 'UTC')
 
-	Timepiece will automatically generate a digital clock and keep it updated.
+*	Timepiece will automatically generate a digital clock and keep it updated.
