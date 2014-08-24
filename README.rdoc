@@ -1,12 +1,16 @@
 = Timepiece
 
+
 Installation: 
 
 	#Gemfile
+
 		gem 'timepiece'
 
 	#application.js
+
 		//= require timepiece
+
 
 How to use:
 
