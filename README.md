@@ -10,7 +10,7 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   gem 'timepiece'
   ```
 
-2. Require timpiece in app/assets/javascripts/application.js
+2. Require timepiece.js in app/assets/javascripts/application.js
 
   ```javascript
   //= require timepiece
