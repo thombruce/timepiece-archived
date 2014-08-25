@@ -1,33 +1,41 @@
+hours = []
+minutes = []
+seconds = []
+
 function get_time(){
-	$(".timepiece").each(function(){
-		zone = $(this).attr('title')
-		$.ajax({ type: "GET", url: "/timepiece/clock.json", data:{timezone: zone}, dataType: "json", cache: false }).success(function(time){
-			hours = parseInt(time.hours,10)
-			minutes = parseInt(time.minutes,10)
-			seconds = parseInt(time.seconds,10)
-		});
-	})
+	var zones = []
+	$(".timepiece").each(function(){ zones.push($(this).attr('title')) })
+	var timezones = { 'timezones' : zones }
+	$.ajax({ type: "POST", url: "/timepiece/clock.json", data: timezones, dataType: "json", cache: false }).success(function(time){
+		for(var i = 0; i < time.length; i++){
+			hours.push(parseInt(time[i].hours,10))
+			minutes.push(parseInt(time[i].minutes,10))
+			seconds.push(parseInt(time[i].seconds,10))
+		}
+	});
 }
 
 function show_time(){
 	setInterval(function(){
-		if (seconds < 59){
-			seconds += 1
-		} else {
-			seconds = 0
-			if (minutes < 59){
-				minutes += 1
+		for(i = 0; i < hours.length; i++){
+			if (seconds[i] < 59){
+				seconds[i] += 1
 			} else {
-				minutes = 0
-				if (hours < 23){
-					hours += 1
+				seconds[i] = 0
+				if (minutes[i] < 59){
+					minutes[i] += 1
 				} else {
-					hours = 0
+					minutes[i] = 0
+					if (hours[i] < 23){
+						hours[i] += 1
+					} else {
+						hours[i] = 0
+					}
 				}
 			}
 		}
-		$(".timepiece").each(function(){
-			$(this).html(( hours < 10 ? "0" : "" ) + hours + ':' + ( minutes < 10 ? "0" : "" ) + minutes + ':' + ( seconds < 10 ? "0" : "" ) + seconds)
+		$(".timepiece").each(function(i, e){
+			$(e).html(( hours[i] < 10 ? "0" : "" ) + hours[i] + ':' + ( minutes[i] < 10 ? "0" : "" ) + minutes[i] + ':' + ( seconds[i] < 10 ? "0" : "" ) + seconds[i])
 		})
 	}, 1000)
 }
