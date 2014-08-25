@@ -7,13 +7,13 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
 1. Add Timepiece to your application's Gemfile
 
   ```ruby
-    gem 'timepiece'
+  gem 'timepiece'
   ```
 
 2. Require timpiece in app/assets/javascripts/application.js
 
   ```javascript
-    //= require timepiece
+  //= require timepiece
   ```
 
 ## Usage
@@ -21,13 +21,13 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
 * Add a functional clock to your views
 
   ```erb
-    <%= timepiece %>
+  <%= timepiece %>
   ```
 
 * Pass a timezone paramater (Defaults to 'UTC')
 
   ```erb
-    <%= timepiece('London') %>
+  <%= timepiece('London') %>
   ```
 
 * Timepiece will automatically generate a digital clock and keep it updated.
