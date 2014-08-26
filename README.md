@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/timepiece.svg)](http://badge.fury.io/rb/timepiece)
+
 ## Timepiece
 
 Timepiece is a Rails plugin providing a simple digital clock, accurate to your server's time and maintained by jQuery.
