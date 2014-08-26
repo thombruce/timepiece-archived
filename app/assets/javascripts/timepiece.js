@@ -16,7 +16,7 @@ function get_time(){
 }
 
 function show_time(){
-	setInterval(function(){
+	timer = setInterval(function(){
 		for(i = 0; i < hours.length; i++){
 			if (seconds[i] < 59){
 				seconds[i] += 1
@@ -39,10 +39,20 @@ function show_time(){
 		})
 	}, 1000)
 }
+
+function reset_time(){
+	hours = []
+	minutes = []
+	seconds = []
+	get_time()
+	clearInterval(timer)
+	show_time()
+}
+
 $(document).ready(function(){
 	get_time()
 	show_time()
 })
 $(window).focus(function(){
-	get_time()
+	reset_time()
 })
