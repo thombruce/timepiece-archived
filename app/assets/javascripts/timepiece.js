@@ -1,6 +1,6 @@
-hours = []
-minutes = []
-seconds = []
+get_hours = []
+get_minutes = []
+get_seconds = []
 
 function get_time(){
 	var zones = []
@@ -8,10 +8,13 @@ function get_time(){
 	var timezones = { 'timezones' : zones }
 	$.ajax({ type: "POST", url: "/timepiece/clock.json", data: timezones, dataType: "json", cache: false }).success(function(time){
 		for(var i = 0; i < time.length; i++){
-			hours.push(parseInt(time[i].hours,10))
-			minutes.push(parseInt(time[i].minutes,10))
-			seconds.push(parseInt(time[i].seconds,10))
+			get_hours.push(parseInt(time[i].hours,10))
+			get_minutes.push(parseInt(time[i].minutes,10))
+			get_seconds.push(parseInt(time[i].seconds,10))
 		}
+		hours = get_hours
+		minutes = get_minutes
+		seconds = get_seconds
 	});
 }
 
@@ -41,9 +44,9 @@ function show_time(){
 }
 
 function reset_time(){
-	hours = []
-	minutes = []
-	seconds = []
+	get_hours = []
+	get_minutes = []
+	get_seconds = []
 	get_time()
 }
 
