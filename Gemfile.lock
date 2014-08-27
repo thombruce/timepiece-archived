@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    timepiece (0.0.4)
+    timepiece (0.0.5)
 
 GEM
   remote: https://rubygems.org/
