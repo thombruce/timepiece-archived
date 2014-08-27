@@ -45,8 +45,6 @@ function reset_time(){
 	minutes = []
 	seconds = []
 	get_time()
-	clearInterval(timer)
-	show_time()
 }
 
 $(document).ready(function(){
