@@ -4,7 +4,7 @@ get_seconds = []
 
 function get_time(){
 	var zones = []
-	$(".timepiece").each(function(){ zones.push($(this).attr('title')) })
+	$(".timepiece").each(function(){ zones.push($(this).attr('data-timezone')) })
 	var timezones = { 'timezones' : zones }
 	$.ajax({ type: "POST", url: "/timepiece/clock.json", data: timezones, dataType: "json", cache: false }).success(function(time){
 		for(var i = 0; i < time.length; i++){
