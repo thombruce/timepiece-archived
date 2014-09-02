@@ -39,9 +39,29 @@ function show_time(){
 		}
 		$(".timepiece").each(function(i, e){
 			$(e).html(function(){
-				$('.timepiece-hours', $(this)).html(( hours[i] < 10 ? "0" : "" ) + hours[i]);
-				$('.timepiece-minutes', $(this)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
-				$('.timepiece-seconds', $(this)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
+				if($(e).attr("data-tptype") == '12'){
+					if(hours[i] > 12){
+						$(e).data('hours', hours[i] - 12)
+						abbr = 'pm'
+					}else if(hours[i] == 0){
+						$(e).data('hours', 12)
+						abbr = 'am'
+					}else if(hours[i] == 12){
+						$(e).data('hours', 12)
+						abbr = 'pm'
+					}else if(hours[i] < 12){
+						$(e).data('hours', hours[i])
+						abbr = 'am'
+					}
+					$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "0" : "" ) + $(e).data('hours'));
+					$('.timepiece-minutes', $(e)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
+					$('.timepiece-seconds', $(e)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
+					$('.timepiece-abbr', $(e)).html(abbr);
+				}else{
+					$('.timepiece-hours', $(e)).html(( hours[i] < 10 ? "0" : "" ) + hours[i]);
+					$('.timepiece-minutes', $(e)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
+					$('.timepiece-seconds', $(e)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
+				}
 			})
 		})
 	}, 1000)

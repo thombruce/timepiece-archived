@@ -1,22 +1,28 @@
 module TimepieceHelper
-  def timepiece(location = 'UTC')
+  def timepiece(location = 'UTC', type = '12')
   	Time.zone = location
   	hours = Time.now.in_time_zone.strftime('%H')
   	minutes = Time.now.in_time_zone.strftime('%M')
   	seconds = Time.now.in_time_zone.strftime('%S')
+  	if type == '12' && hours.to_i > 12
+  	  hours = hours.to_i - 12
+  	  var = 'pm'
+  	elsif type == '12' && hours.to_i == 0
+  	  hours = 12
+  	  var = 'am'
+  	elsif type == '12' && hours.to_i == 12
+  	  var = 'pm'
+  	elsif type == '12' && hours.to_i < 12
+  	  var = 'am'
+  	end
   	time = "<span class='timepiece-hours'>#{hours}</span>"\
            "<span class='timepiece-separator tp-separator-1'>:</span>"\
            "<span class='timepiece-minutes'>#{minutes}</span>"\
            "<span class='timepiece-separator tp-separator-2'>:</span>"\
            "<span class='timepiece-seconds'>#{seconds}</span>"
-  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location)
+    if type == '12'
+      time = time + "<span class='timepiece-abbr'>#{var}</span>"
+    end
+  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type)
   end
 end
-
-  	# note on sup/sub - optional, of course. Perhaps best left to the user's own ingenuity. Replace with individual spans?
-
-#\
- #          "<span class='timepiece-abbr'>"\
-  #           "<sup>am</sup>"\
-   #          "<sub>pm</sub>"\
-    #       "</span>"
