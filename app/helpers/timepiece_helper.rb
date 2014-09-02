@@ -26,3 +26,8 @@ module TimepieceHelper
   	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type)
   end
 end
+
+
+# Note: add class to timepiece-abbr: timepiece-abbr-#{var} . Working this on the JS side shouldn't be too difficult just...
+# element.addClass('timepiece-abbr-' + var) right? Except, you have to remove old and add new, toggle or something-something.
+# Therein lies the difficulty.
