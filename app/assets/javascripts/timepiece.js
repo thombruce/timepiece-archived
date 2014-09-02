@@ -38,7 +38,11 @@ function show_time(){
 			}
 		}
 		$(".timepiece").each(function(i, e){
-			$(e).html(( hours[i] < 10 ? "0" : "" ) + hours[i] + ':' + ( minutes[i] < 10 ? "0" : "" ) + minutes[i] + ':' + ( seconds[i] < 10 ? "0" : "" ) + seconds[i])
+			$(e).html(function(){
+				$('.timepiece-hours', $(this)).html(( hours[i] < 10 ? "0" : "" ) + hours[i]);
+				$('.timepiece-minutes', $(this)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
+				$('.timepiece-seconds', $(this)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
+			})
 		})
 	}, 1000)
 }
