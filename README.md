@@ -34,8 +34,8 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
 
 * By default, Timepiece shows a 24 hour digital clock. You can show a 12 hour clock by specifying it explicitly.
 
-```erb
-<%= timepiece('London', '12') %>
-```
+  ```erb
+  <%= timepiece('London', '12') %>
+  ```
 
 * Timepiece will automatically generate a digital clock and keep it updated.
