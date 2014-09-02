@@ -6,6 +6,9 @@ module TimepieceHelper
   	seconds = Time.now.in_time_zone.strftime('%S')
   	if type == '12' && hours.to_i > 12
   	  hours = hours.to_i - 12
+      if hours < 10
+        hours = '0' + hours.to_s
+      end
   	  var = 'pm'
   	elsif type == '12' && hours.to_i == 0
   	  hours = 12
