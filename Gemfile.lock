@@ -1,7 +1,8 @@
 PATH
   remote: .
   specs:
-    timepiece (0.0.5)
+    timepiece (0.1.0)
+      jquery-rails (>= 3.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -28,7 +29,7 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
-    minitest (5.4.0)
+    minitest (5.4.1)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -47,5 +48,4 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  jquery-rails (>= 3.1.0)
   timepiece!
