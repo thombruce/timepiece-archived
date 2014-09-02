@@ -1,5 +1,5 @@
 module TimepieceHelper
-  def timepiece(location = 'UTC', type = '12')
+  def timepiece(location = 'UTC', type = '24')
   	Time.zone = location
   	hours = Time.now.in_time_zone.strftime('%H')
   	minutes = Time.now.in_time_zone.strftime('%M')
