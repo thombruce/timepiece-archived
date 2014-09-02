@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    timepiece (0.1.0)
-      jquery-rails (>= 3.1.0)
+    timepiece (0.1.1)
+      jquery-rails (>= 3.0.0)
 
 GEM
   remote: https://rubygems.org/
