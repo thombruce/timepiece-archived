@@ -8,6 +8,7 @@ module TimepieceHelper
   	  hours = hours.to_i - 12
       if hours < 10
         hours = '0' + hours.to_s
+        # Could opt for &#8199; rather than 0, or use neither. Best to supply all as options.
       end
   	  var = 'pm'
   	elsif type == '12' && hours.to_i == 0
