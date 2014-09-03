@@ -24,13 +24,8 @@ module TimepieceHelper
            "<span class='timepiece-separator tp-separator-2'>:</span>"\
            "<span class='timepiece-seconds'>#{seconds}</span>"
     if type == '12'
-      time = time + "<span class='timepiece-abbr'>#{var}</span>"
+      time = time + "<span class='timepiece-abbr timepiece-abbr-#{var}'>#{var}</span>"
     end
   	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type)
   end
 end
-
-
-# Note: add class to timepiece-abbr: timepiece-abbr-#{var} . Working this on the JS side shouldn't be too difficult just...
-# element.addClass('timepiece-abbr-' + var) right? Except, you have to remove old and add new, toggle or something-something.
-# Therein lies the difficulty.

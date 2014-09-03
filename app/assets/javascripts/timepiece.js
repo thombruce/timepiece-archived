@@ -57,6 +57,13 @@ function show_time(){
 					$('.timepiece-minutes', $(e)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
 					$('.timepiece-seconds', $(e)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
 					$('.timepiece-abbr', $(e)).html(abbr);
+					if(abbr == 'am'){
+						$('.timepiece-abbr', $(e)).removeClass('timepiece-abbr-pm');
+						$('.timepiece-abbr', $(e)).addClass('timepiece-abbr-am');
+					} else {
+						$('.timepiece-abbr', $(e)).removeClass('timepiece-abbr-am');
+						$('.timepiece-abbr', $(e)).addClass('timepiece-abbr-pm');
+					}
 				}else{
 					$('.timepiece-hours', $(e)).html(( hours[i] < 10 ? "0" : "" ) + hours[i]);
 					$('.timepiece-minutes', $(e)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
