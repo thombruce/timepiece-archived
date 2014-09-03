@@ -37,5 +37,3 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   ```erb
   <%= timepiece('London', '12') %>
   ```
-
-* Timepiece will automatically generate a digital clock and keep it updated.
