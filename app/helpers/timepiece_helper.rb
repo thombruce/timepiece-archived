@@ -6,10 +6,14 @@ module TimepieceHelper
   	seconds = Time.now.in_time_zone.strftime('%S')
   	if type == '12' && hours.to_i > 12
   	  hours = hours.to_i - 12
-      if hours < 10
-        hours = '0' + hours.to_s
+      #if hours < 10
+      #  hours = '0' + hours.to_s
         # Could opt for &#8199; rather than 0, or use neither. Best to supply all as options.
-      end
+        # But which should be default?
+        # 01:23:59am
+        #  1:23:59am
+        # 1:23:59am
+      #end
   	  var = 'pm'
   	elsif type == '12' && hours.to_i == 0
   	  hours = 12
