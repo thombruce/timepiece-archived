@@ -19,11 +19,7 @@ module TimepieceHelper
   	  end
       if hours < 10 && lead == '0'
         hours = '0' + hours.to_s
-        # Could opt for &#8199; rather than 0, or use neither. Best to supply all as options.
-        # But which should be default?
-        # 01:23:59am
-        #  1:23:59am
-        # 1:23:59am
+        # Next, add &#8199 as option - digit-sized blank; great for maintaining alignment without the 0.
       end
     end
   	time = "<span class='timepiece-hours'>#{hours}</span>"\
