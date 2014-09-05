@@ -1,28 +1,31 @@
 module TimepieceHelper
-  def timepiece(location = 'UTC', type = '24')
+  def timepiece(location = 'UTC', type = '24', lead = '')
   	Time.zone = location
   	hours = Time.now.in_time_zone.strftime('%H')
   	minutes = Time.now.in_time_zone.strftime('%M')
   	seconds = Time.now.in_time_zone.strftime('%S')
-  	if type == '12' && hours.to_i > 12
-  	  hours = hours.to_i - 12
-      #if hours < 10
-      #  hours = '0' + hours.to_s
+  	if type == '12'
+      hours = hours.to_i
+      if hours > 12
+        hours = hours - 12
+  	    var = 'pm'
+      elsif hours == 0
+  	    hours = 12
+  	    var = 'am'
+  	  elsif hours == 12
+  	    var = 'pm'
+  	  elsif hours < 12
+  	    var = 'am'
+  	  end
+      if hours < 10 && lead == '0'
+        hours = '0' + hours.to_s
         # Could opt for &#8199; rather than 0, or use neither. Best to supply all as options.
         # But which should be default?
         # 01:23:59am
         #  1:23:59am
         # 1:23:59am
-      #end
-  	  var = 'pm'
-  	elsif type == '12' && hours.to_i == 0
-  	  hours = 12
-  	  var = 'am'
-  	elsif type == '12' && hours.to_i == 12
-  	  var = 'pm'
-  	elsif type == '12' && hours.to_i < 12
-  	  var = 'am'
-  	end
+      end
+    end
   	time = "<span class='timepiece-hours'>#{hours}</span>"\
            "<span class='timepiece-separator tp-separator-1'>:</span>"\
            "<span class='timepiece-minutes'>#{minutes}</span>"\
@@ -31,6 +34,6 @@ module TimepieceHelper
     if type == '12'
       time = time + "<span class='timepiece-abbr timepiece-abbr-#{var}'>#{var}</span>"
     end
-  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type)
+  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead)
   end
 end

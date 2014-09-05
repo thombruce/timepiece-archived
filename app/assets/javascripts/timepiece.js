@@ -53,8 +53,11 @@ function show_time(){
 						$(e).data('hours', hours[i])
 						abbr = 'am'
 					}
-					$('.timepiece-hours', $(e)).html($(e).data('hours'));
-					//$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "0" : "" ) + $(e).data('hours'));
+					if($(e).attr("data-lead") == '0' ){
+						$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "0" : "" ) + $(e).data('hours'));
+					}else{
+						$('.timepiece-hours', $(e)).html($(e).data('hours'));
+					}
 					$('.timepiece-minutes', $(e)).html(( minutes[i] < 10 ? "0" : "" ) + minutes[i]);
 					$('.timepiece-seconds', $(e)).html(( seconds[i] < 10 ? "0" : "" ) + seconds[i]);
 					$('.timepiece-abbr', $(e)).html(abbr);
