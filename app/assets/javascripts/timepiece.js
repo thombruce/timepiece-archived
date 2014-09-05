@@ -55,6 +55,8 @@ function show_time(){
 					}
 					if($(e).attr("data-lead") == '0' ){
 						$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "0" : "" ) + $(e).data('hours'));
+					}else if($(e).attr("data-lead") == '_'){
+						$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "&#8199;" : "" ) + $(e).data('hours'));
 					}else{
 						$('.timepiece-hours', $(e)).html($(e).data('hours'));
 					}
