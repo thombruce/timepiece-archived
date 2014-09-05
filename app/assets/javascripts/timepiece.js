@@ -53,9 +53,9 @@ function show_time(){
 						$(e).data('hours', hours[i])
 						abbr = 'am'
 					}
-					if($(e).attr("data-lead") == '0' ){
+					if($(e).attr("data-lead") == '0' || $(e).attr("data-lead") == 'zero' ){
 						$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "0" : "" ) + $(e).data('hours'));
-					}else if($(e).attr("data-lead") == '_'){
+					}else if($(e).attr("data-lead") == '_' || $(e).attr("data-lead") == 'space' ){
 						$('.timepiece-hours', $(e)).html(( $(e).data('hours') < 10 ? "&#8199;" : "" ) + $(e).data('hours'));
 					}else{
 						$('.timepiece-hours', $(e)).html($(e).data('hours'));

@@ -17,11 +17,12 @@ module TimepieceHelper
   	  elsif hours < 12
   	    var = 'am'
   	  end
-      if hours < 10 && lead == '0'
-        hours = '0' + hours.to_s
-      elsif hours < 10 && lead == '_'
-        hours = '&#8199;' + hours.to_s
-        # Next, add &#8199; as option - digit-sized blank; great for maintaining alignment without the 0.
+      if hours < 10
+        if lead == '0' || lead == 'zero'
+          hours = '0' + hours.to_s
+        elsif lead == '_' || lead == 'space'
+          hours = '&#8199;' + hours.to_s
+        end
       end
     end
   	time = "<span class='timepiece-hours'>#{hours}</span>"\
