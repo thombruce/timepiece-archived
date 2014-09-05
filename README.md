@@ -32,8 +32,34 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   <%= timepiece('London') %>
   ```
 
-* By default, Timepiece shows a 24 hour digital clock. You can show a 12 hour clock by specifying it explicitly.
+* Show a 12 hour clock by specifying it explicitly
 
   ```erb
   <%= timepiece('London', '12') %>
+  ```
+
+By default the 12 hour clock displays time without any leading character, in the format '1:23pm'. You can add either a zero, as present on the 24 hour clock, or a leading space character the size of a numerical digit - useful for keeping your clocks aligned.
+
+* To add a leading zero to hour values less than ten
+
+  ```erb
+  <%= timepiece('London', '12', '0') %>
+  ```
+
+  or
+  
+  ```erb
+  <%= timepiece('London', '12', 'zero') %>
+  ```
+
+* To add a space character
+
+  ```erb
+  <%= timepiece('London', '12', '_') %>
+  ```
+
+  or
+
+  ```erb
+  <%= timepiece('London', '12', 'space') %>
   ```
