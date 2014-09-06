@@ -1,10 +1,10 @@
 {<img src="https://badge.fury.io/rb/timepiece.svg" alt="Gem Version" />}[http://badge.fury.io/rb/timepiece]
 
-## Timepiece
+= Timepiece
 
 Timepiece is a Rails plugin providing a simple digital clock, accurate to your server's time and maintained by jQuery.
 
-## Installation
+== Installation
 
 1. Add Timepiece to your application's Gemfile
 
@@ -14,7 +14,7 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
 
     //= require timepiece
 
-## Usage
+== Usage
 
 * Add a functional clock to your views
 
@@ -34,7 +34,7 @@ By default the 12 hour clock displays time without any leading character, in the
 
     <%= timepiece('London', '12', '0') %>
 
-    or
+  or
 
     <%= timepiece('London', '12', 'zero') %>
 
@@ -42,6 +42,6 @@ By default the 12 hour clock displays time without any leading character, in the
 
     <%= timepiece('London', '12', '_') %>
 
-    or
+  or
 
     <%= timepiece('London', '12', 'space') %>
