@@ -1,5 +1,5 @@
 module TimepieceHelper
-  def timepiece(location = 'UTC', type = '24', lead = 'none')
+  def timepiece(location = 'UTC', type = '24', lead = 'none', abbr_sep = 'none')
   	Time.zone = location
   	hours = Time.now.in_time_zone.strftime('%H')
   	minutes = Time.now.in_time_zone.strftime('%M')
@@ -24,6 +24,9 @@ module TimepieceHelper
           hours = '&#8199;' + hours.to_s
         end
       end
+      if abbr_sep == '.'
+        var = var.gsub(/([apm])/, '\1.')
+      end
     end
   	time = "<span class='timepiece-hours'>#{hours}</span>"\
            "<span class='timepiece-separator tp-separator-1'>:</span>"\
@@ -33,6 +36,6 @@ module TimepieceHelper
     if type == '12'
       time = time + "<span class='timepiece-abbr timepiece-abbr-#{var}'>#{var}</span>"
     end
-  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead)
+  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead, 'data-abbr_separator' => abbr_sep)
   end
 end
