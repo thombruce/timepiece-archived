@@ -68,6 +68,6 @@ You can apply your own styles to any part of the Timepiece clock. For instance, 
 
 * Add punctuation to am/pm abbreviation
 
-  ```
+  ```erb
   <%= timepiece('London', '12', '0', '.') %>
   ```
