@@ -63,3 +63,11 @@ By default the 12 hour clock displays time without any leading character, in the
   ```erb
   <%= timepiece('London', '12', 'space') %>
   ```
+
+You can apply your own styles to any part of the Timepiece clock. For instance, you can capitalize the AM/PM abbreviation by targeting the span with class 'timepiece-abbr'. By default, the abbreviations are displayed without punctuation. To add punctuation, you can specify it in the options.
+
+* Add punctuation to am/pm abbreviation
+
+  ```
+  <%= timepiece('London', '12', '0', '.') %>
+  ```
