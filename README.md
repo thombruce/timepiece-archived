@@ -32,13 +32,13 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   <%= timepiece('London') %>
   ```
 
-* Show a 12 hour clock by specifying it explicitly
+* Show a 12 hour clock by specifying its `type:` explicitly
 
   ```erb
   <%= timepiece('London', type: '12') %>
   ```
 
-By default the 12 hour clock displays time without any leading character, in the format '1:23pm'. You can add either a zero, as present on the 24 hour clock, or a leading space character the size of a numerical digit - useful for keeping your clocks aligned.
+By default the 12 hour clock displays time without any leading character, in the format '1:23pm'. You can add either a zero, as present on the 24 hour clock, or a leading space character the size of a numerical digit - useful for keeping your clocks aligned. To achieve this, set the Timepiece's `lead:`
 
 * To add a leading zero to hour values less than ten
 
@@ -64,7 +64,7 @@ By default the 12 hour clock displays time without any leading character, in the
   <%= timepiece('London', lead: 'space') %>
   ```
 
-You can apply your own styles to any part of the Timepiece clock. For instance, you can capitalize the AM/PM abbreviation by targeting the span with class 'timepiece-abbr'. By default, the abbreviations are displayed without punctuation. To add punctuation, you can specify it in the options.
+You can apply your own styles to any part of the Timepiece clock. For instance, you can capitalize the AM/PM abbreviation by targeting the span with class 'timepiece-abbr'. By default, the abbreviations are displayed without punctuation. To add punctuation, you can specify it with the `abbr_sep:` option.
 
 * Add punctuation to am/pm abbreviation
 
