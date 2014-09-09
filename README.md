@@ -1,6 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/timepiece.svg)](http://badge.fury.io/rb/timepiece)
 
-## Timepiece
+# Timepiece
 
 Timepiece is a Rails plugin providing a simple digital clock, accurate to your server's time and maintained by jQuery.
 
@@ -38,30 +38,32 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   <%= timepiece('London', type: '12') %>
   ```
 
+### 12 Hour Clock Options
+
 By default the 12 hour clock displays time without any leading character, in the format '1:23pm'. You can add either a zero, as present on the 24 hour clock, or a leading space character the size of a numerical digit - useful for keeping your clocks aligned. To achieve this, set the Timepiece's `lead:`
 
 * To add a leading zero to hour values less than ten
 
   ```erb
-  <%= timepiece('London', lead: '0') %>
+  <%= timepiece('London', type: '12', lead: '0') %>
   ```
 
   or
   
   ```erb
-  <%= timepiece('London', lead: 'zero') %>
+  <%= timepiece('London', type: '12', lead: 'zero') %>
   ```
 
 * To add a space character
 
   ```erb
-  <%= timepiece('London', lead: '_') %>
+  <%= timepiece('London', type: '12', lead: '_') %>
   ```
 
   or
 
   ```erb
-  <%= timepiece('London', lead: 'space') %>
+  <%= timepiece('London', type: '12', lead: 'space') %>
   ```
 
 You can apply your own styles to any part of the Timepiece clock. For instance, you can capitalize the AM/PM abbreviation by targeting the span with class 'timepiece-abbr'. By default, the abbreviations are displayed without punctuation. To add punctuation, you can specify it with the `abbr_sep:` option.
@@ -69,5 +71,5 @@ You can apply your own styles to any part of the Timepiece clock. For instance, 
 * Add punctuation to am/pm abbreviation
 
   ```erb
-  <%= timepiece('London', abbr_sep: '.') %>
+  <%= timepiece('London', type: '12', abbr_sep: '.') %>
   ```
