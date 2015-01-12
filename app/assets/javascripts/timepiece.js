@@ -94,6 +94,10 @@ $(document).ready(function(){
 	get_time()
 	show_time()
 })
+$(document).on('page:load', function(){
+	clearInterval(timer);
+	// Quickfix for Turbolinks. We should revisit this.
+})
 $(window).focus(function(){
 	reset_time()
 })
