@@ -73,3 +73,13 @@ You can apply your own styles to any part of the Timepiece clock. For instance, 
   ```erb
   <%= timepiece('London', type: '12', abbr_sep: '.') %>
   ```
+
+## Timer
+
+It is now also possible to make use of a basic timer. To start a count from `Time.now`, simply include `timer` in your Rails projects.
+
+* The helper also takes a time object as a parameter, for example:
+
+  ```erb
+  <%= timer(User.first.created_at) %>
+  ```
