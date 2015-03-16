@@ -123,10 +123,10 @@ function show_timer(){
     }
     $(".timepiece-timer").each(function(i, e){
       $(e).html(function(){
-        $('.timepiece-days', $(e)).html(( timer_days[i] < 10 ? "0" : "" ) + timer_days[i]);
-        $('.timepiece-hours', $(e)).html(( timer_hours[i] < 10 ? "0" : "" ) + timer_hours[i]);
-        $('.timepiece-minutes', $(e)).html(( timer_minutes[i] < 10 ? "0" : "" ) + timer_minutes[i]);
-        $('.timepiece-seconds', $(e)).html(( timer_seconds[i] < 10 ? "0" : "" ) + timer_seconds[i]);
+        $('.timepiece-days', $(e)).html(timer_days[i]);
+        $('.timepiece-hours', $(e)).html(timer_hours[i]);
+        $('.timepiece-minutes', $(e)).html(timer_minutes[i]);
+        $('.timepiece-seconds', $(e)).html(timer_seconds[i]);
       })
     })
   }, 1000)

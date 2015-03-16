@@ -53,13 +53,15 @@ module TimepieceHelper
 
     seconds = seconds_diff
 
-    time = "<span class='timepiece-days'>#{days.to_s.rjust(2, '0')}</span>"\
+    time = "<span class='timepiece-days'>#{days.to_s}</span>"\
            "<span class='timepiece-descriptor tp-descriptor-days'> days </span>"\
-           "<span class='timepiece-hours'>#{hours.to_s.rjust(2, '0')}</span>"\
-           "<span class='timepiece-separator tp-separator-1'>:</span>"\
-           "<span class='timepiece-minutes'>#{minutes.to_s.rjust(2, '0')}</span>"\
-           "<span class='timepiece-separator tp-separator-2'>:</span>"\
-           "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>"
+           "<span class='timepiece-hours'>#{hours.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-hours'> hours </span>"\
+           "<span class='timepiece-minutes'>#{minutes.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-minutes'> minutes </span>"\
+           "<span class='timepiece-seconds'>#{seconds.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-seconds'> seconds </span>"
+           # "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>" # Note: rjust; it might be useful.
 
     content_tag(:span, time.html_safe, class: 'timepiece-timer', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds)
   end
