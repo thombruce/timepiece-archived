@@ -18,6 +18,8 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   //= require timepiece
   ```
 
+Note: If you're using Turbolinks with your Rails project, you should also install jquery-turbolinks to ensure functionality is maintained between page loads.
+
 ## Usage
 
 * Add a functional clock to your views
