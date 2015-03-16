@@ -147,8 +147,13 @@ $(document).ready(function(){
 })
 $(document).on('page:load', function(){
 	clearInterval(clock);
+  reset_time();
 	clearInterval(timer);
 	// Quickfix for Turbolinks. We should revisit this.
+  // Note we also need jquery-turbolinks to be installed (should at least make users aware of this)
+  // And currently navigation via browser history buttons will break our clocks. FIXME:
+  // quick solution - 'onhashchange' . Why we're not using it: Covers more events than we need to refresh for - AJAX cost too high.
+  // We're going to need something a little more custom.
 })
 $(window).focus(function(){
 	reset_time()
