@@ -38,4 +38,29 @@ module TimepieceHelper
     end
   	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead, 'data-abbr_separator' => abbr_sep)
   end
+
+  def timer(time_since = Time.now) # in theory
+    seconds_diff = (Time.now - time_since).to_i
+
+    days = seconds_diff / 86400
+    seconds_diff -= days * 86400
+
+    hours = seconds_diff / 3600
+    seconds_diff -= hours * 3600
+
+    minutes = seconds_diff / 60
+    seconds_diff -= minutes * 60
+
+    seconds = seconds_diff
+
+    time = "<span class='timepiece-days'>#{days.to_s.rjust(2, '0')}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-days'> days </span>"\
+           "<span class='timepiece-hours'>#{hours.to_s.rjust(2, '0')}</span>"\
+           "<span class='timepiece-separator tp-separator-1'>:</span>"\
+           "<span class='timepiece-minutes'>#{minutes.to_s.rjust(2, '0')}</span>"\
+           "<span class='timepiece-separator tp-separator-2'>:</span>"\
+           "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>"
+
+    content_tag(:span, time.html_safe, class: 'timepiece-timer', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds)
+  end
 end

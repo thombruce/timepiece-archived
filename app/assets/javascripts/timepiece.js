@@ -19,7 +19,7 @@ function get_time(){
 }
 
 function show_time(){
-	timer = setInterval(function(){
+	clock = setInterval(function(){
 		for(i = 0; i < hours.length; i++){
 			if (seconds[i] < 59){
 				seconds[i] += 1
@@ -83,6 +83,55 @@ function show_time(){
 	}, 1000)
 }
 
+get_timer_days = []
+get_timer_hours = []
+get_timer_minutes = []
+get_timer_seconds = []
+
+function set_timer(){
+  $(".timepiece-timer").each(function(){
+    get_timer_days.push(parseInt($(this).attr('data-days'),10))
+    get_timer_hours.push(parseInt($(this).attr('data-hours'),10))
+    get_timer_minutes.push(parseInt($(this).attr('data-minutes'),10))
+    get_timer_seconds.push(parseInt($(this).attr('data-seconds'),10))
+    timer_days = get_timer_days
+    timer_hours = get_timer_hours
+    timer_minutes = get_timer_minutes
+    timer_seconds = get_timer_seconds
+  });
+}
+
+function show_timer(){
+  timer = setInterval(function(){
+    for(i = 0; i < timer_hours.length; i++){
+      if (timer_seconds[i] < 59){
+        timer_seconds[i] += 1
+      } else {
+        timer_seconds[i] = 0
+        if (timer_minutes[i] < 59){
+          timer_minutes[i] += 1
+        } else {
+          timer_minutes[i] = 0
+          if (timer_hours[i] < 23){
+            timer_hours[i] += 1
+          } else {
+            timer_hours[i] = 0
+            timer_days[i] += 1
+          }
+        }
+      }
+    }
+    $(".timepiece-timer").each(function(i, e){
+      $(e).html(function(){
+        $('.timepiece-days', $(e)).html(( timer_days[i] < 10 ? "0" : "" ) + timer_days[i]);
+        $('.timepiece-hours', $(e)).html(( timer_hours[i] < 10 ? "0" : "" ) + timer_hours[i]);
+        $('.timepiece-minutes', $(e)).html(( timer_minutes[i] < 10 ? "0" : "" ) + timer_minutes[i]);
+        $('.timepiece-seconds', $(e)).html(( timer_seconds[i] < 10 ? "0" : "" ) + timer_seconds[i]);
+      })
+    })
+  }, 1000)
+}
+
 function reset_time(){
 	get_hours = []
 	get_minutes = []
@@ -92,9 +141,12 @@ function reset_time(){
 
 $(document).ready(function(){
 	get_time()
+  set_timer()
 	show_time()
+  show_timer()
 })
 $(document).on('page:load', function(){
+	clearInterval(clock);
 	clearInterval(timer);
 	// Quickfix for Turbolinks. We should revisit this.
 })
