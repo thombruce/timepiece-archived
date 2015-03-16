@@ -39,7 +39,7 @@ module TimepieceHelper
   	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead, 'data-abbr_separator' => abbr_sep)
   end
 
-  def timer(time_since = Time.now) # in theory
+  def timer(time_since = Time.now)
     seconds_diff = (Time.now - time_since).to_i
 
     days = seconds_diff / 86400
