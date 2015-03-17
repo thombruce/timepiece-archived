@@ -85,3 +85,13 @@ It is now also possible to make use of a basic timer. To start a count from `Tim
   ```erb
   <%= timer(User.first.created_at) %>
   ```
+
+## Countdown
+
+There is also a basic countdown implementation. To start a countdown to 2016, simply include `countdown` in your Rails projects.
+
+* The helper also takes a time object as a parameter, for example:
+
+  ```erb
+  <%= countdown(Time.new(2016, 3, 14)) %> <!-- My birthday and, of course, Pi day -->
+  ```

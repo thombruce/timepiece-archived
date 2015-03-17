@@ -132,6 +132,55 @@ function show_timer(){
   }, 1000)
 }
 
+get_countdown_days = []
+get_countdown_hours = []
+get_countdown_minutes = []
+get_countdown_seconds = []
+
+function set_countdown(){
+  $(".timepiece-countdown").each(function(){
+    get_countdown_days.push(parseInt($(this).attr('data-days'),10))
+    get_countdown_hours.push(parseInt($(this).attr('data-hours'),10))
+    get_countdown_minutes.push(parseInt($(this).attr('data-minutes'),10))
+    get_countdown_seconds.push(parseInt($(this).attr('data-seconds'),10))
+    countdown_days = get_countdown_days
+    countdown_hours = get_countdown_hours
+    countdown_minutes = get_countdown_minutes
+    countdown_seconds = get_countdown_seconds
+  });
+}
+
+function show_countdown(){
+  countdown = setInterval(function(){
+    for(i = 0; i < countdown_hours.length; i++){
+      if (countdown_seconds[i] > 0){
+        countdown_seconds[i] -= 1
+      } else {
+        countdown_seconds[i] = 59
+        if (countdown_minutes[i] > 0){
+          countdown_minutes[i] -= 1
+        } else {
+          countdown_minutes[i] = 59
+          if (countdown_hours[i] > 0){
+            countdown_hours[i] -= 1
+          } else {
+            countdown_hours[i] = 23
+            countdown_days[i] -= 1
+          }
+        }
+      }
+    }
+    $(".timepiece-countdown").each(function(i, e){
+      $(e).html(function(){
+        $('.timepiece-days', $(e)).html(countdown_days[i]);
+        $('.timepiece-hours', $(e)).html(countdown_hours[i]);
+        $('.timepiece-minutes', $(e)).html(countdown_minutes[i]);
+        $('.timepiece-seconds', $(e)).html(countdown_seconds[i]);
+      })
+    })
+  }, 1000)
+}
+
 function reset_time(){
 	get_hours = []
 	get_minutes = []
@@ -142,13 +191,16 @@ function reset_time(){
 $(document).ready(function(){
 	get_time()
   set_timer()
+  set_countdown()
 	show_time()
   show_timer()
+  show_countdown()
 })
 $(document).on('page:load', function(){
 	clearInterval(clock);
   reset_time();
 	clearInterval(timer);
+  clearInterval(countdown);
 	// Quickfix for Turbolinks. We should revisit this.
   // Note we also need jquery-turbolinks to be installed (should at least make users aware of this)
   // And currently navigation via browser history buttons will break our clocks. FIXME:

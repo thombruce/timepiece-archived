@@ -65,4 +65,31 @@ module TimepieceHelper
 
     content_tag(:span, time.html_safe, class: 'timepiece-timer', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds)
   end
+
+  def countdown(time_until = Time.new(2016))
+    seconds_diff = (time_until - Time.now).to_i
+
+    days = seconds_diff / 86400
+    seconds_diff -= days * 86400
+
+    hours = seconds_diff / 3600
+    seconds_diff -= hours * 3600
+
+    minutes = seconds_diff / 60
+    seconds_diff -= minutes * 60
+
+    seconds = seconds_diff
+
+    time = "<span class='timepiece-days'>#{days.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-days'> days </span>"\
+           "<span class='timepiece-hours'>#{hours.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-hours'> hours </span>"\
+           "<span class='timepiece-minutes'>#{minutes.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-minutes'> minutes </span>"\
+           "<span class='timepiece-seconds'>#{seconds.to_s}</span>"\
+           "<span class='timepiece-descriptor tp-descriptor-seconds'> seconds </span>"
+           # "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>" # Note: rjust; it might be useful.
+
+    content_tag(:span, time.html_safe, class: 'timepiece-countdown', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds)
+  end
 end
