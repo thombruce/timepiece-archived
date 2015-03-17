@@ -93,5 +93,5 @@ There is also a basic countdown implementation. To start a countdown to 2016, si
 * The helper also takes a time object as a parameter, for example:
 
   ```erb
-  <%= countdown(Time.new(2016, 3, 14)) %> <!-- My birthday and, of course, Pi day -->
+  <%= countdown(Time.new(2016, 3, 14)) %> <%# My birthday and, of course, Pi day %>
   ```
