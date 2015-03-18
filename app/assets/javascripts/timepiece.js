@@ -196,12 +196,18 @@ function reset_time(){
 }
 
 $(document).ready(function(){
-	get_time()
-  set_timer()
-  set_countdown()
-	show_time()
-  show_timer()
-  show_countdown()
+  if ($(".timepiece").length > 0){
+    get_time()
+    show_time()
+  }
+  if ($(".timepiece-timer").length > 0){
+    set_timer()
+    show_timer()
+  }
+  if ($(".timepiece-countdown").length > 0){
+    set_countdown()
+    show_countdown()
+  }
 })
 $(document).on('page:load', function(){
 	clearInterval(clock);
