@@ -196,6 +196,7 @@ function reset_time(){
 }
 
 $(document).ready(function(){
+  // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
   if ($(".timepiece").length > 0){
     get_time()
     show_time()
