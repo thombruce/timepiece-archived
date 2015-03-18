@@ -165,7 +165,14 @@ function show_countdown(){
             countdown_hours[i] -= 1
           } else {
             countdown_hours[i] = 23
-            countdown_days[i] -= 1
+            if (countdown_days[i] > 0){
+              countdown_days[i] -= 1
+            } else {
+              countdown_days[i] = 0
+              countdown_hours[i] = 0
+              countdown_minutes[i] = 0
+              countdown_seconds[i] = 0
+            }
           }
         }
       }
