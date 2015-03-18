@@ -37,7 +37,7 @@ module TimepieceHelper
     if type == '12'
       time = time + "<span class='timepiece-abbr timepiece-abbr-#{var}'>#{var}</span>"
     end
-  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead, 'data-abbr_separator' => abbr_sep, 'id' => id)
+  	content_tag(:span, time.html_safe, class: 'timepiece', 'data-timezone' => location, 'data-tptype' => type, 'data-lead' => lead, 'data-abbr_separator' => abbr_sep, 'id' => (id unless id.blank?))
   end
 
   def timer(time_since = Time.now, id: '')
@@ -64,7 +64,7 @@ module TimepieceHelper
            "<span class='timepiece-descriptor tp-descriptor-seconds'> seconds </span>"
            # "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>" # Note: rjust; it might be useful.
 
-    content_tag(:span, time.html_safe, class: 'timepiece-timer', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds, 'id' => id)
+    content_tag(:span, time.html_safe, class: 'timepiece-timer', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds, 'id' => (id unless id.blank?))
   end
 
   def countdown(time_until = Time.new(2016), id: '')
@@ -91,6 +91,6 @@ module TimepieceHelper
            "<span class='timepiece-descriptor tp-descriptor-seconds'> seconds </span>"
            # "<span class='timepiece-seconds'>#{seconds.to_s.rjust(2, '0')}</span>" # Note: rjust; it might be useful.
 
-    content_tag(:span, time.html_safe, class: 'timepiece-countdown', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds, 'id' => id)
+    content_tag(:span, time.html_safe, class: 'timepiece-countdown', 'data-days' => days, 'data-hours' => hours, 'data-minutes' => minutes, 'data-seconds' => seconds, 'id' => (id unless id.blank?))
   end
 end
