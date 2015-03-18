@@ -1,5 +1,6 @@
 module TimepieceHelper
   def timepiece(location = 'UTC', type: '24', lead: 'none', abbr_sep: 'none', id: '')
+    # Note: On the inclusion of IDs, you should /not/ display them if none is given - HTML compliance.
   	Time.zone = location
   	hours = Time.now.in_time_zone.strftime('%H')
   	minutes = Time.now.in_time_zone.strftime('%M')
