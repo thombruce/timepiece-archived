@@ -195,6 +195,22 @@ function reset_time(){
 	get_time()
 }
 
+function reset_timer(){
+  get_timer_days = []
+  get_timer_hours = []
+  get_timer_minutes = []
+  get_timer_seconds = []
+  set_timer()
+}
+
+function reset_countdown(){
+  get_countdown_days = []
+  get_countdown_hours = []
+  get_countdown_minutes = []
+  get_countdown_seconds = []
+  set_countdown()
+}
+
 $(document).ready(function(){
   // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
   if ($(".timepiece").length > 0){
@@ -211,10 +227,18 @@ $(document).ready(function(){
   }
 })
 $(document).on('page:load', function(){
-	clearInterval(clock);
-  reset_time();
-	clearInterval(timer);
-  clearInterval(countdown);
+  if ($(".timepiece").length > 0){
+  	clearInterval(clock);
+    reset_time();
+  }
+  if ($(".timepiece-timer").length > 0){
+  	clearInterval(timer);
+    reset_timer();
+  }
+  if ($(".timepiece-countdown").length > 0){
+    clearInterval(countdown);
+    reset_countdown();
+  }
 	// Quickfix for Turbolinks. We should revisit this.
   // Note we also need jquery-turbolinks to be installed (should at least make users aware of this)
   // And currently navigation via browser history buttons will break our clocks. FIXME:
