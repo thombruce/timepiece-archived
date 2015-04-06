@@ -20,6 +20,7 @@ function get_time(){
 
 function show_time(){
 	clock = setInterval(function(){
+    clock_running = true;
 		for(i = 0; i < hours.length; i++){
 			if (seconds[i] < 59){
 				seconds[i] += 1
@@ -103,6 +104,7 @@ function set_timer(){
 
 function show_timer(){
   timer = setInterval(function(){
+    timer_running = true;
     for(i = 0; i < timer_hours.length; i++){
       if (timer_seconds[i] < 59){
         timer_seconds[i] += 1
@@ -152,6 +154,7 @@ function set_countdown(){
 
 function show_countdown(){
   countdown = setInterval(function(){
+    countdown_running = true;
     for(i = 0; i < countdown_hours.length; i++){
       if (countdown_seconds[i] > 0){
         countdown_seconds[i] -= 1
@@ -211,6 +214,8 @@ function reset_countdown(){
   set_countdown()
 }
 
+/* Let's discuss when those functions will be performed. */
+
 $(document).ready(function(){
   // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
   if ($(".timepiece").length > 0){
@@ -228,23 +233,28 @@ $(document).ready(function(){
 })
 $(document).on('page:load', function(){
   if ($(".timepiece").length > 0){
-  	clearInterval(clock);
+    if (clock_running){
+    	clearInterval(clock);
+    }
     reset_time();
   }
   if ($(".timepiece-timer").length > 0){
-  	clearInterval(timer);
+    if (timer_running){
+    	clearInterval(timer);
+    }
     reset_timer();
+    // FIXME: Some code may be superfluous. We've fixed the interval glitch but we should investigate when $(document).ready is running. How much do we really need our reset functions?
   }
   if ($(".timepiece-countdown").length > 0){
-    clearInterval(countdown);
+    if (countdown_running){
+      clearInterval(countdown);
+    }
     reset_countdown();
   }
-	// Quickfix for Turbolinks. We should revisit this.
-  // Note we also need jquery-turbolinks to be installed (should at least make users aware of this)
-  // And currently navigation via browser history buttons will break our clocks. FIXME:
-  // quick solution - 'onhashchange' . Why we're not using it: Covers more events than we need to refresh for - AJAX cost too high.
-  // We're going to need something a little more custom.
 })
+
 $(window).focus(function(){
-	reset_time()
+  if ($(".timepiece").length > 0){
+  	reset_time()
+  }
 })
