@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.licenses    = ["MIT"]
   s.authors     = ["Thom Bruce"]
   s.email       = ["thom@thombruce.com"]
-  s.homepage    = "http://thombruce.com/"
+  s.homepage    = "http://thombruce.com/timepiece"
   s.summary     = "Provides a digital clock for Rails applications."
   s.description = "Timepiece provides an accurate digital clock to your Rails applications, refreshed by a jQuery script."
 

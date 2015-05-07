@@ -126,9 +126,29 @@ function show_timer(){
     $(".timepiece-timer").each(function(i, e){
       $(e).html(function(){
         $('.timepiece-days', $(e)).html(timer_days[i]);
+        if (timer_days[i] == 1){
+          $('.tp-descriptor-days', $(e)).html('&nbsp;day ');
+        } else {
+          $('.tp-descriptor-days', $(e)).html('&nbsp;days ');
+        }
         $('.timepiece-hours', $(e)).html(timer_hours[i]);
+        if (timer_hours[i] == 1){
+          $('.tp-descriptor-hours', $(e)).html('&nbsp;hour ');
+        } else {
+          $('.tp-descriptor-hours', $(e)).html('&nbsp;hours ');
+        }
         $('.timepiece-minutes', $(e)).html(timer_minutes[i]);
+        if (timer_minutes[i] == 1){
+          $('.tp-descriptor-minutes', $(e)).html('&nbsp;minute ');
+        } else {
+          $('.tp-descriptor-minutes', $(e)).html('&nbsp;minutes ');
+        }
         $('.timepiece-seconds', $(e)).html(timer_seconds[i]);
+        if (timer_seconds[i] == 1){
+          $('.tp-descriptor-seconds', $(e)).html('&nbsp;second ');
+        } else {
+          $('.tp-descriptor-seconds', $(e)).html('&nbsp;seconds ');
+        }
       })
     })
   }, 1000)
@@ -183,9 +203,29 @@ function show_countdown(){
     $(".timepiece-countdown").each(function(i, e){
       $(e).html(function(){
         $('.timepiece-days', $(e)).html(countdown_days[i]);
+        if (countdown_days[i] == 1){
+          $('.tp-descriptor-days', $(e)).html('&nbsp;day ');
+        } else {
+          $('.tp-descriptor-days', $(e)).html('&nbsp;days ');
+        }
         $('.timepiece-hours', $(e)).html(countdown_hours[i]);
+        if (countdown_hours[i] == 1){
+          $('.tp-descriptor-hours', $(e)).html('&nbsp;hour ');
+        } else {
+          $('.tp-descriptor-hours', $(e)).html('&nbsp;hours ');
+        }
         $('.timepiece-minutes', $(e)).html(countdown_minutes[i]);
+        if (countdown_minutes[i] == 1){
+          $('.tp-descriptor-minutes', $(e)).html('&nbsp;minute ');
+        } else {
+          $('.tp-descriptor-minutes', $(e)).html('&nbsp;minutes ');
+        }
         $('.timepiece-seconds', $(e)).html(countdown_seconds[i]);
+        if (countdown_seconds[i] == 1){
+          $('.tp-descriptor-seconds', $(e)).html('&nbsp;second ');
+        } else {
+          $('.tp-descriptor-seconds', $(e)).html('&nbsp;seconds ');
+        }
       })
     })
   }, 1000)
