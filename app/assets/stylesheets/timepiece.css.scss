@@ -70,3 +70,21 @@
   width: 1%;
   z-index: 8;
 }
+
+// Animation code - unused but kept for reference:
+// We should animate the clocks into correct positions when the clock refreshes on page reentry.
+/*
+@-webkit-keyframes rotate {
+  100% {-webkit-transform: rotateZ(360deg);}
+}
+
+.timepiece-hours-container {
+  -webkit-animation: rotate 43200s infinite linear;
+}
+.timepiece-minutes-container {
+  -webkit-animation: rotate 3600s infinite steps(60);
+}
+.timepiece-seconds-container {
+  -webkit-animation: rotate 60s infinite steps(60);
+}
+*/
