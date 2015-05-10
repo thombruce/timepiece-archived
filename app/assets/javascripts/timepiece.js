@@ -1,3 +1,71 @@
+get_analog_hours = []
+get_analog_minutes = []
+get_analog_seconds = []
+
+function get_analog(){
+  var zones = []
+  $(".timepiece-analog").each(function(){ zones.push($(this).attr('data-timezone')) })
+  var timezones = { 'timezones' : zones }
+  $.ajax({ type: "POST", url: "/timepiece/clock.json", data: timezones, dataType: "json", cache: false }).success(function(time){
+    for(var i = 0; i < time.length; i++){
+      get_analog_hours.push(parseInt(time[i].hours,10))
+      get_analog_minutes.push(parseInt(time[i].minutes,10))
+      get_analog_seconds.push(parseInt(time[i].seconds,10))
+    }
+    analog_hours = get_analog_hours
+    analog_minutes = get_analog_minutes
+    analog_seconds = get_analog_seconds
+  });
+}
+
+function show_analog(){
+  analog = setInterval(function(){
+    analog_running = true;
+    for(i = 0; i < analog_hours.length; i++){
+      if (analog_seconds[i] < 59){
+        analog_seconds[i] += 1
+      } else {
+        analog_seconds[i] = 0
+        if (analog_minutes[i] < 59){
+          analog_minutes[i] += 1
+        } else {
+          analog_minutes[i] = 0
+          if (analog_hours[i] < 23){
+            analog_hours[i] += 1
+          } else {
+            analog_hours[i] = 0
+          }
+        }
+      }
+    }
+    $(".timepiece-analog").each(function(i, e){
+      $(e).html(function(){
+        if(analog_hours[i] > 12){
+          $(e).data('analog_hours', analog_hours[i] - 12)
+        }else if(analog_hours[i] == 0){
+          $(e).data('analog_hours', 12)
+        }else if(analog_hours[i] == 12){
+          $(e).data('analog_hours', 12)
+        }else if(analog_hours[i] < 12){
+          $(e).data('analog_hours', analog_hours[i])
+        }
+        $(e).data('hours_angle', ($(e).data('analog_hours') * 30) + (analog_minutes[i] / 2));
+        $(e).data('minutes_angle', analog_minutes[i] * 6);
+        $(e).data('seconds_angle', analog_seconds[i] * 6);
+        $('.timepiece-hours-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('hours_angle') + 'deg)'); // angle set on each
+        $('.timepiece-hours-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('hours_angle') + 'deg)');
+        $('.timepiece-hours-container', $(e)).css('transform','rotateZ(' + $(e).data('hours_angle') + 'deg)');
+        $('.timepiece-minutes-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
+        $('.timepiece-minutes-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
+        $('.timepiece-minutes-container', $(e)).css('transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
+        $('.timepiece-seconds-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
+        $('.timepiece-seconds-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
+        $('.timepiece-seconds-container', $(e)).css('transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
+      })
+    })
+  }, 1000)
+}
+
 get_hours = []
 get_minutes = []
 get_seconds = []
@@ -231,6 +299,13 @@ function show_countdown(){
   }, 1000)
 }
 
+function reset_analog(){
+  get_analog_hours = []
+  get_analog_minutes = []
+  get_analog_seconds = []
+  get_analog()
+}
+
 function reset_time(){
 	get_hours = []
 	get_minutes = []
@@ -258,6 +333,10 @@ function reset_countdown(){
 
 $(document).ready(function(){
   // Might want to reformat to move if-statement : should also be performed before 'reset_time' so as not to make a blank AJAX request.
+  if ($(".timepiece-analog").length > 0){
+    get_analog()
+    show_analog()
+  }
   if ($(".timepiece").length > 0){
     get_time()
     show_time()
@@ -272,6 +351,12 @@ $(document).ready(function(){
   }
 })
 $(document).on('page:load', function(){
+  if ($(".timepiece-analog").length > 0){
+    if (analog_running){
+      clearInterval(analog);
+    }
+    reset_analog();
+  }
   if ($(".timepiece").length > 0){
     if (clock_running){
     	clearInterval(clock);
@@ -294,6 +379,9 @@ $(document).on('page:load', function(){
 })
 
 $(window).focus(function(){
+  if ($(".timepiece-analog").length > 0){
+    reset_analog()
+  }
   if ($(".timepiece").length > 0){
   	reset_time()
   }
