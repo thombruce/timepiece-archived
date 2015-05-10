@@ -1,17 +1,17 @@
 // CSS for the analogue clock version of timepiece, and maybe some optional styles for the digital.
 
 .timepiece-analog {
-  border:solid 0.5em;
-  border-color:#000;
+  //border:solid 1em;
+  //border-color:#222;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: #eee;
   background-size: 88%;
   position: relative;
 
 }
 
 .timepiece-analog:after {
-  background: #000;
+  background: #d00;
   border-radius: 50%;
   content: "";
   position: absolute;
@@ -34,11 +34,11 @@
 }
 
 .timepiece-analog-hours {
-  background: #000;
-  height: 20%;
+  background: #333;
+  height: 25%; //
   left: 48.75%;
   position: absolute;
-  top: 30%;
+  top: 25%; //
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
@@ -46,11 +46,11 @@
 }
 
 .timepiece-analog-minutes {
-  background: #000;
-  height: 40%;
+  background: #333;
+  height: 40%; //
   left: 49%;
   position: absolute;
-  top: 10%;
+  top: 10%; //
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
@@ -58,11 +58,11 @@
 }
 
 .timepiece-analog-seconds {
-  background: #000;
-  height: 45%;
+  background: #d00;
+  height: 45%; //
   left: 49.5%;
   position: absolute;
-  top: 14%;
+  top: 14%; //
   -ms-transform-origin: 50% 80%;
   -webkit-transform-origin: 50% 80%;
   transform-origin: 50% 80%;
