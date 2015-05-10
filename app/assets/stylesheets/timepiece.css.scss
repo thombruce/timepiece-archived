@@ -18,6 +18,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 5%;
   height: 5%;
@@ -38,6 +40,8 @@
   left: 48.75%;
   position: absolute;
   top: 30%;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
   width: 2.5%;
 }
@@ -48,6 +52,8 @@
   left: 49%;
   position: absolute;
   top: 10%;
+  -ms-transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
   width: 2%;
 }
@@ -58,24 +64,9 @@
   left: 49.5%;
   position: absolute;
   top: 14%;
+  -ms-transform-origin: 50% 80%;
+  -webkit-transform-origin: 50% 80%;
   transform-origin: 50% 80%;
   width: 1%;
   z-index: 8;
 }
-
-// Animation code: we should do this in JS
-/*
-@-webkit-keyframes rotate {
-  100% {-webkit-transform: rotateZ(360deg);}
-}
-
-.timepiece-hours-container {
-  -webkit-animation: rotate 43200s infinite linear;
-}
-.timepiece-minutes-container {
-  -webkit-animation: rotate 3600s infinite steps(60);
-}
-.timepiece-seconds-container {
-  -webkit-animation: rotate 60s infinite steps(60);
-}
-*/
