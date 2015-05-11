@@ -1,8 +1,8 @@
-// CSS for the analogue clock version of timepiece, and maybe some optional styles for the digital.
+/* CSS for the analogue clock version of timepiece, and maybe some optional styles for the digital. */
 
 .timepiece-analog {
-  //border:solid 1em;
-  //border-color:#222;
+  /*border:solid 1em;*/
+  /*border-color:#222;*/
   border-radius: 50%;
   background-color: #eee;
   background-size: 88%;
@@ -34,10 +34,10 @@
 
 .timepiece-analog-hours {
   background: #333;
-  height: 25%; //
+  height: 25%; /**/
   left: 48.75%;
   position: absolute;
-  top: 25%; //
+  top: 25%; /**/
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
@@ -46,10 +46,10 @@
 
 .timepiece-analog-minutes {
   background: #333;
-  height: 40%; //
+  height: 40%; /**/
   left: 49%;
   position: absolute;
-  top: 10%; //
+  top: 10%; /**/
   -ms-transform-origin: 50% 100%;
   -webkit-transform-origin: 50% 100%;
   transform-origin: 50% 100%;
@@ -58,10 +58,10 @@
 
 .timepiece-analog-seconds {
   background: #d00;
-  height: 45%; //
+  height: 45%; /**/
   left: 49.5%;
   position: absolute;
-  top: 14%; //
+  top: 14%; /**/
   -ms-transform-origin: 50% 80%;
   -webkit-transform-origin: 50% 80%;
   transform-origin: 50% 80%;
@@ -69,8 +69,8 @@
   z-index: 8;
 }
 
-// Animation code - unused but kept for reference:
-// We should animate the clocks into correct positions when the clock refreshes on page reentry.
+/* Animation code - unused but kept for reference: */
+/* We should animate the clocks into correct positions when the clock refreshes on page reentry. */
 /*
 @-webkit-keyframes rotate {
   100% {-webkit-transform: rotateZ(360deg);}
@@ -88,7 +88,7 @@
 */
 
 .timepiece-analog-day{
-  //border-color:#222;
+  /* border-color:#222; */
   background-color:#eee;
 }
 .timepiece-analog-day:after, .timepiece-analog-day .timepiece-analog-seconds {
@@ -100,7 +100,7 @@
 
 
 .timepiece-analog-night{
-  //border-color:#222;
+  /* border-color:#222; */
   background-color:#333;
 }
 .timepiece-analog-night:after, .timepiece-analog-night .timepiece-analog-seconds {
