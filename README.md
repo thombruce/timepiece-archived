@@ -18,6 +18,18 @@ Timepiece is a Rails plugin providing a simple digital clock, accurate to your s
   //= require timepiece
   ```
 
+3. If you want to use the new analog clock, you also need to require timepiece in your css
+
+  ```css
+  *= require 'timepiece'
+  ```
+
+  or if you're using SCSS
+
+  ```scss
+  @import 'timepiece';
+  ```
+
 Note: If you're using Turbolinks with your Rails project, you should also install jquery-turbolinks to ensure functionality is maintained between page loads.
 
 ## Usage
@@ -75,6 +87,24 @@ You can apply your own styles to any part of the Timepiece clock. For instance, 
   ```erb
   <%= timepiece('London', type: '12', abbr_sep: '.') %>
   ```
+
+## Analog
+
+New to version 0.2.0+, you can now include analog clocks in your projects.
+
+* The helper takes the same timezone parameter as the digital version (defaults to 'UTC'):
+
+  ```erb
+  <%= analog('London') %>
+  ```
+
+* To specify a certain size for the clock, use the `size` parameter (defaults to 10em):
+
+  ```erb
+  <%= analog('London', :size => '100px') %>
+  ```
+
+  Note that if you pass a percentage, the size will be set as a percentage of the containing div.
 
 ## Timer
 

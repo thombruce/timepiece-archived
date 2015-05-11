@@ -42,16 +42,21 @@ module TimepieceHelper
 
   def analog(location = 'UTC', id: '', size: '10em')
     Time.zone = location
-    hours = Time.now.in_time_zone.strftime('%I')
+    hours = Time.now.in_time_zone.strftime('%H')
     minutes = Time.now.in_time_zone.strftime('%M')
     seconds = Time.now.in_time_zone.strftime('%S')
+    if hours.to_i >= 6 && hours.to_i < 18
+      time_of_day_class = 'timepiece-analog-day'
+    else
+      time_of_day_class = 'timepiece-analog-night'
+    end
     hours_angle = (hours.to_i * 30) + (minutes.to_i / 2)
     minutes_angle = minutes.to_i * 6
     seconds_angle = seconds.to_i * 6
     time = "<div class='timepiece-hours-container' style='-ms-transform:rotateZ(#{hours_angle}deg);-webkit-transform:rotateZ(#{hours_angle}deg);transform:rotateZ(#{hours_angle}deg);'><div class='timepiece-analog-hours'></div></div>"\
            "<div class='timepiece-minutes-container' style='-ms-transform:rotateZ(#{minutes_angle}deg);-webkit-transform:rotateZ(#{minutes_angle}deg);transform:rotateZ(#{minutes_angle}deg);'><div class='timepiece-analog-minutes'></div></div>"\
            "<div class='timepiece-seconds-container' style='-ms-transform:rotateZ(#{seconds_angle}deg);-webkit-transform:rotateZ(#{seconds_angle}deg);transform:rotateZ(#{seconds_angle}deg);'><div class='timepiece-analog-seconds'></div></div>"
-    content_tag(:div, time.html_safe, class: 'timepiece-analog', 'data-timezone' => location, 'id' => (id unless id.blank?), 'style' => 'width:' + size + ';padding-bottom:' + size + ';')
+    content_tag(:div, time.html_safe, class: 'timepiece-analog ' + time_of_day_class, 'data-timezone' => location, 'id' => (id unless id.blank?), 'style' => 'width:' + size + ';padding-bottom:' + size + ';')
   end
 
   def timer(time_since = Time.now, id: '')

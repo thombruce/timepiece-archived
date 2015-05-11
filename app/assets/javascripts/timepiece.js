@@ -39,6 +39,13 @@ function show_analog(){
       }
     }
     $(".timepiece-analog").each(function(i, e){
+      if(analog_hours[i] >= 6 && analog_hours[i] < 18){
+        $(e).addClass('timepiece-analog-day')
+        $(e).removeClass('timepiece-analog-night')
+      }else{
+        $(e).addClass('timepiece-analog-night')
+        $(e).removeClass('timepiece-analog-day')
+      }
       $(e).html(function(){
         if(analog_hours[i] > 12){
           $(e).data('analog_hours', analog_hours[i] - 12)
@@ -52,15 +59,9 @@ function show_analog(){
         $(e).data('hours_angle', ($(e).data('analog_hours') * 30) + (analog_minutes[i] / 2));
         $(e).data('minutes_angle', analog_minutes[i] * 6);
         $(e).data('seconds_angle', analog_seconds[i] * 6);
-        $('.timepiece-hours-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('hours_angle') + 'deg)'); // angle set on each
-        $('.timepiece-hours-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('hours_angle') + 'deg)');
-        $('.timepiece-hours-container', $(e)).css('transform','rotateZ(' + $(e).data('hours_angle') + 'deg)');
-        $('.timepiece-minutes-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
-        $('.timepiece-minutes-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
-        $('.timepiece-minutes-container', $(e)).css('transform','rotateZ(' + $(e).data('minutes_angle') + 'deg)');
-        $('.timepiece-seconds-container', $(e)).css('-ms-transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
-        $('.timepiece-seconds-container', $(e)).css('-webkit-transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
-        $('.timepiece-seconds-container', $(e)).css('transform','rotateZ(' + $(e).data('seconds_angle') + 'deg)');
+        $('.timepiece-hours-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)','transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)'}); // angle set on each
+        $('.timepiece-minutes-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)','transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)'});
+        $('.timepiece-seconds-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)','transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)'});
       })
     })
   }, 1000)

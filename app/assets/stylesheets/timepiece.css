@@ -86,3 +86,26 @@
   -webkit-animation: rotate 60s infinite steps(60);
 }
 */
+
+.timepiece-analog-day{
+  //border-color:#222;
+  background-color:#eee;
+}
+.timepiece-analog-day:after, .timepiece-analog-day .timepiece-analog-seconds {
+  background: #d00;
+}
+.timepiece-analog-day .timepiece-analog-hours, .timepiece-analog-day .timepiece-analog-minutes {
+  background: #333;
+}
+
+
+.timepiece-analog-night{
+  //border-color:#222;
+  background-color:#333;
+}
+.timepiece-analog-night:after, .timepiece-analog-night .timepiece-analog-seconds {
+  background: #d00;
+}
+.timepiece-analog-night .timepiece-analog-hours, .timepiece-analog-night .timepiece-analog-minutes {
+  background: #eee;
+}
