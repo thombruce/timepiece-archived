@@ -8,6 +8,9 @@
   background-size: 88%;
   position: relative;
   height:0;
+  -ms-box-sizing:content-box;
+  -webkit-box-sizing:content-box;
+  box-sizing:content-box;
 }
 
 .timepiece-analog:after {
