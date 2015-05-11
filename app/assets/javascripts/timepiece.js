@@ -40,6 +40,11 @@
         }
       }
       $(".timepiece-analog").each(function(i, e){
+        if(analog_hours[i] >= 12){
+          abbr = 'pm'
+        }else if(analog_hours[i] < 12){
+          abbr = 'am'
+        }
         if(analog_hours[i] >= 6 && analog_hours[i] < 18){
           $(e).addClass('timepiece-analog-day')
           $(e).removeClass('timepiece-analog-night')
@@ -63,6 +68,7 @@
           $('.timepiece-hours-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)','transform':'rotateZ(' + $(e).data('hours_angle') + 'deg)'}); // angle set on each
           $('.timepiece-minutes-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)','transform':'rotateZ(' + $(e).data('minutes_angle') + 'deg)'});
           $('.timepiece-seconds-container', $(e)).css({'-ms-transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)','-webkit-transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)','transform':'rotateZ(' + $(e).data('seconds_angle') + 'deg)'});
+          $('.timepiece-analog-abbr', $(e)).html(abbr);
         })
       })
     }, 1000)

@@ -24,12 +24,26 @@
   z-index: 10;
 }
 
+.timepiece-analog-abbr {
+  color: #333;
+  font-family:Helvetica,Arial,sans-serif;
+  font-size:1.25em;
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
 .timepiece-minutes-container, .timepiece-hours-container, .timepiece-seconds-container {
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  z-index:5;
 }
 
 .timepiece-analog-hours {
@@ -98,6 +112,13 @@
   background: #333;
 }
 
+.timepiece-analog-day .timepiece-analog-abbr {
+  color: #333;
+}
+
+.timepiece-analog-night .timepiece-analog-abbr {
+  color: #eee;
+}
 
 .timepiece-analog-night{
   /* border-color:#222; */
