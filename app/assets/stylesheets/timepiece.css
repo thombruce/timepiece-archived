@@ -7,6 +7,7 @@
   background-color: #eee;
   background-size: 88%;
   position: relative;
+  height:0;
 }
 
 .timepiece-analog:after {
