@@ -51,7 +51,7 @@ module TimepieceHelper
     time = "<div class='timepiece-hours-container' style='-ms-transform:rotateZ(#{hours_angle}deg);-webkit-transform:rotateZ(#{hours_angle}deg);transform:rotateZ(#{hours_angle}deg);'><div class='timepiece-analog-hours'></div></div>"\
            "<div class='timepiece-minutes-container' style='-ms-transform:rotateZ(#{minutes_angle}deg);-webkit-transform:rotateZ(#{minutes_angle}deg);transform:rotateZ(#{minutes_angle}deg);'><div class='timepiece-analog-minutes'></div></div>"\
            "<div class='timepiece-seconds-container' style='-ms-transform:rotateZ(#{seconds_angle}deg);-webkit-transform:rotateZ(#{seconds_angle}deg);transform:rotateZ(#{seconds_angle}deg);'><div class='timepiece-analog-seconds'></div></div>"
-    content_tag(:div, time.html_safe, class: 'timepiece-analog', 'data-timezone' => location, 'id' => (id unless id.blank?), 'style' => 'width:' + size + ';padding-bottom:' + size + ';')
+    content_tag(:article, time.html_safe, class: 'timepiece-analog', 'data-timezone' => location, 'id' => (id unless id.blank?), 'style' => 'width:' + size + ';padding-bottom:' + size + ';')
   end
 
   def timer(time_since = Time.now, id: '')
