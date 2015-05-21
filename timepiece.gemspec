@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.summary     = "Provides a digital clock for Rails applications."
   s.description = "Timepiece provides an accurate digital clock to your Rails applications, refreshed by a jQuery script."
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "jquery-rails", ">= 3.0.0"
