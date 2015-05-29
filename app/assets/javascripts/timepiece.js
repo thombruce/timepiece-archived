@@ -207,19 +207,19 @@
           } else {
             $('.tp-descriptor-days', $(e)).html('&nbsp;days ');
           }
-          $('.timepiece-hours', $(e)).html(timer_hours[i]);
+          $('.timepiece-hours', $(e)).html(( timer_hours[i] < 10 ? "0" : "" ) + timer_hours[i]);
           if (timer_hours[i] == 1){
             $('.tp-descriptor-hours', $(e)).html('&nbsp;hour ');
           } else {
             $('.tp-descriptor-hours', $(e)).html('&nbsp;hours ');
           }
-          $('.timepiece-minutes', $(e)).html(timer_minutes[i]);
+          $('.timepiece-minutes', $(e)).html(( timer_minutes[i] < 10 ? "0" : "" ) + timer_minutes[i]);
           if (timer_minutes[i] == 1){
             $('.tp-descriptor-minutes', $(e)).html('&nbsp;minute ');
           } else {
             $('.tp-descriptor-minutes', $(e)).html('&nbsp;minutes ');
           }
-          $('.timepiece-seconds', $(e)).html(timer_seconds[i]);
+          $('.timepiece-seconds', $(e)).html(( timer_seconds[i] < 10 ? "0" : "" ) + timer_seconds[i]);
           if (timer_seconds[i] == 1){
             $('.tp-descriptor-seconds', $(e)).html('&nbsp;second ');
           } else {
@@ -284,19 +284,19 @@
           } else {
             $('.tp-descriptor-days', $(e)).html('&nbsp;days ');
           }
-          $('.timepiece-hours', $(e)).html(countdown_hours[i]);
+          $('.timepiece-hours', $(e)).html(( countdown_hours[i] < 10 ? "0" : "" ) + countdown_hours[i]);
           if (countdown_hours[i] == 1){
             $('.tp-descriptor-hours', $(e)).html('&nbsp;hour ');
           } else {
             $('.tp-descriptor-hours', $(e)).html('&nbsp;hours ');
           }
-          $('.timepiece-minutes', $(e)).html(countdown_minutes[i]);
+          $('.timepiece-minutes', $(e)).html(( countdown_minutes[i] < 10 ? "0" : "" ) + countdown_minutes[i]);
           if (countdown_minutes[i] == 1){
             $('.tp-descriptor-minutes', $(e)).html('&nbsp;minute ');
           } else {
             $('.tp-descriptor-minutes', $(e)).html('&nbsp;minutes ');
           }
-          $('.timepiece-seconds', $(e)).html(countdown_seconds[i]);
+          $('.timepiece-seconds', $(e)).html(( countdown_seconds[i] < 10 ? "0" : "" ) + countdown_seconds[i]);
           if (countdown_seconds[i] == 1){
             $('.tp-descriptor-seconds', $(e)).html('&nbsp;second ');
           } else {
