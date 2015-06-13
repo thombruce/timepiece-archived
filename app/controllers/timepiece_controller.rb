@@ -1,7 +1,5 @@
 class TimepieceController < ApplicationController
 
-  respond_to :json
-
   def clock
     arr = Array.new
     params[:timezones].each_with_index do | data, index |
@@ -13,7 +11,9 @@ class TimepieceController < ApplicationController
       }
       arr << time
     end
-    render :json => arr
+    respond_to do |format|
+      format.json { render :json => arr }
+    end
   end
 
 end
